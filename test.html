@@ -1,104 +1,84 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-
-    .background {
-      fill: none;
-      pointer-events: all;
-    }
-
-    #states {
-        fill: #aaa;
-    }
-
-    #state-borders {
-        fill: none;
-        stroke: #fff;
-        stroke-width: 1.5px;
-        stroke-linejoin: round;
-        stroke-linecap: round;
-        pointer-events: none;
-    }
-</style>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MAP</title>
+  <meta charset="utf-8">
+  <style>
+    svg {
+      background-color: lightskyblue;
+    }
+    .municipality {
+        fill: #eee;
+        stroke: #999;
+    }
+    .municipality:hover {
+        fill: orange;
+    }
+  </style>
 </head>
 <body>
-    <div id="chart"></div>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <div id = "app" style = "background-color: bisque;height: 500px;width: 300px;float: left";>
+        Hello 할 일이 {{ num }}개 있습니다..
+        <div>
+            <input type="text" v-model="InputText">
+            <button v-on:click="addItem">할 일 추가</button>
+            <button v-on:click="showAlert">경고!</button>
+            <ol>
+                <div v-for="item in items">
+                    <li>{{item}}</li>
+                </div>
+            </ol>
+        </div>
+    </div>
+    <div id = "chart" style = "background-color:blue;height: 500px;
+    width: 800px;
+    float: left;"></div>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v0.min.js"></script>
+  <script>
+    var w = 960, h = 500;
+    var labels;
+    
+    var proj = d3.geo.mercator()
+      .center([128.0, 35.9])
+      .scale(4000)
+      .translate([w/2, h/2]);
+
+    var path = d3.geo.path().projection(proj);
+
+    var svg = d3.select("#chart").append("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+    d3.json("skorea-municipalities-topo.json", function(error, kor) {
+      var municipalities = topojson.object(kor, kor.objects['skorea-municipalities-geo']);
+      svg.selectAll('path').data(municipalities.geometries)
+        .enter().append('path')
+        .attr('d', path)
+        .attr('class', 'municipality');
+    });
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-        var width = 960,
-            height = 500;
-        
-        var projection = d3.geo.mercator()
-            .center([128, 36])
-            .scale(4000)
-            .translate([width/2, height/2]);
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num : 0,
+                message: 'World',
+                InputText: '',
+                items: []
+            },
+            methods: {
+                showAlert: function(){
+                    alert(this.items)
+                },
 
-        var path = d3.geo.path()
-            .projection(projection);
-
-        var zoom = d3.behavior.zoom()
-            .translate(projection.translate())
-            .scale(projection.scale())
-            .scaleExtent([height, 8*height])
-            .on("zoom", zoomed);
-
-        var svg = d3.select("#chart").append("svg")
-            .attr("width", width)
-            .attr("height", height);
-
-        var g = svg.append("g")
-            .call(zoom);
-
-        g.append("rect")
-            .attr("class", "background")
-            .attr("width", width)
-            .attr("height", height);
-        
-        d3.json("topo.json", function(error, us){
-            if (error) throw error;
-
-            g.append("g")
-                .attr("id", "states")
-                .selectAll("path")
-                .data(topojson.feature(us, us.objects.states).features)
-                .enter().append("path")
-                .attr("d", path)
-                .on("click", clicked);
-            
-            g.append("path")
-                .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-                .attr("id", "state-borders")
-                .attr("d", path);
-        });
-
-        function clicked(d) {
-            var centroid = path.centroid(d),
-                translate = projection.translate();
-
-            projection.translate([
-                translate[0] - centroid[0] + width / 2,
-                translate[1] - centroid[1] + height / 2
-            ]);
-
-            zoom.translate(projection.translate());
-
-            g.selectAll("path").transition()
-                .duration(700)
-                .attr("d", path);
-        }
-
-        function zoomed() {
-            projection.translate(d3.event.translate).scale(d3.event.scale);
-            g.selectAll("path").attr("d", path);
-        }
-
+                addItem: function(){
+                    this.items.push(this.InputText);
+                    app.num += 1;
+                    console.log(this.InputText);
+                }
+            }
+        })
     </script>
 </body>
 </html>
