@@ -87,7 +87,6 @@ function zoom() {
 function labelsTransform(d) {
   console.log(path.centroid(d));
 
-  // 寃쎄린�꾧� �쒖슱�밸퀎�쒖� 寃뱀퀜�� �덉쇅 泥섎━
   if (d.id == 8) {
     var arr = path.centroid(d);
     arr[1] += (d3.event && d3.event.scale) ? (d3.event.scale / height + 20) : (initialScale / height + 20);
@@ -99,8 +98,6 @@ function labelsTransform(d) {
 }
 
 
-
-// 踰꾪듉
 $('#radio').buttonset();
 $('#zoomin').button({
   text: false,
