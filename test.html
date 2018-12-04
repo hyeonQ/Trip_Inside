@@ -16,10 +16,27 @@
   </style>
 </head>
 <body>
+    <div id = "app" style = "background-color: bisque;height: 500px;width: 300px;float: left";>
+        Hello 할 일이 {{ num }}개 있습니다..
+        <div>
+            <input type="text" v-model="InputText">
+            <button v-on:click="addItem">할 일 추가</button>
+            <button v-on:click="showAlert">경고!</button>
+            <ol>
+                <div v-for="item in items">
+                    <li>{{item}}</li>
+                </div>
+            </ol>
+        </div>
+    </div>
+    <div id = "chart" style = "background-color:blue;height: 500px;
+    width: 800px;
+    float: left;"></div>
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://d3js.org/topojson.v0.min.js"></script>
   <script>
     var w = 960, h = 500;
+    var labels;
     
     var proj = d3.geo.mercator()
       .center([128.0, 35.9])
@@ -28,10 +45,10 @@
 
     var path = d3.geo.path().projection(proj);
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("#chart").append("svg")
       .attr("width", w)
       .attr("height", h);
-    
+
     d3.json("skorea-municipalities-topo.json", function(error, kor) {
       var municipalities = topojson.object(kor, kor.objects['skorea-municipalities-geo']);
       svg.selectAll('path').data(municipalities.geometries)
@@ -40,5 +57,28 @@
         .attr('class', 'municipality');
     });
   </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num : 0,
+                message: 'World',
+                InputText: '',
+                items: []
+            },
+            methods: {
+                showAlert: function(){
+                    alert(this.items)
+                },
+
+                addItem: function(){
+                    this.items.push(this.InputText);
+                    app.num += 1;
+                    console.log(this.InputText);
+                }
+            }
+        })
+    </script>
 </body>
 </html>
