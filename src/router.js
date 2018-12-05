@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Month from '@/components/Month.vue'
-import LogIn from '@/components/LogIn.vue'
+import Map from '@/components/Map.vue'
+// import LogIn from '@/components/LogIn.vue'
 
 Vue.use(Router)
 
@@ -19,6 +20,11 @@ export default new Router({
       path: '/month',
       name: 'Month',
       component: Month
+    },
+    {
+      path: '/map',
+      name: 'Map',
+      component: Map
     },
     {
       path: '/about',
