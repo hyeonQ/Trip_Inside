@@ -1,6 +1,5 @@
 <template>
-  <div id="wchart" ref="child"> 
-    hello  
+  <div id="wchart" ref="child">  
   </div>
 </template>
 

@@ -73,14 +73,15 @@ export default {
             action: 'local_activity',
             title: 'Recommendation',
             items: [
-              { title: 'District', link: '/district' },
-              { title: 'Month', link: '/month' }
+              { title: 'Map', link: '/map' }
             ]
           },
           {
             action: 'sort',
             title: 'Statistics',
             items: [
+              
+              { title: 'Month', link: '/month' },
               { title: 'Sex', link:'/sex' },
               { title: 'Age', link:'age' },
               { title: 'Job', link:'job' },
