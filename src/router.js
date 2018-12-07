@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Month from '@/components/Month.vue'
 import Map from '@/components/Map.vue'
+import Weather from '@/components/WeatherChart.vue'
 // import LogIn from '@/components/LogIn.vue'
 
 Vue.use(Router)
@@ -24,8 +25,13 @@ export default new Router({
     {
       path: '/map',
       name: 'Map',
-      component: Map
-    },
+      component: Map,
+      children: [
+        { path: 'weather/:id',
+          name: 'Weather',
+          component: Weather}
+      ]
+    },    
     {
       path: '/about',
       name: 'about',
