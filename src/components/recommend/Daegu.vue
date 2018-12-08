@@ -57,23 +57,23 @@
       return { 
           posts: [
           {
-            title: 'a',
-            content: 'a',
-            imgUrl: 'a',
-            clickUrl: 'a',
-            value: 3},
+            title: '대구에 있는 놀이터와 동네 구석구석 찾기',
+            content: '대구의 놀이명물 이월드와 이월드 전망대를 볼 수 있는 코스다. 데이트 코스로도 손색없고, 아이와 함께라면 즐거운 하루가 될 것이다. 시끌벅적하게 놀았다면 고즈넉한 성화사와 고풍스런 벽화가 그려진 마비정 벽화마을을 구석구석 돌아보는 것으로 끝내면 좋겠다. 대구만의 숨은 동네특색을 살펴볼 좋은 기회가 될 것이다.',
+            imgUrl: 'http://tong.visitkorea.or.kr/cms/resource/57/1573857_image2_1.jpg',
+            clickUrl: 'https://korean.visitkorea.or.kr/detail/cs_detail_cos.html?cotid=283970f3-467a-4070-9b02-bddf687dc5b1',
+            value: 4.5},
           {
-            title: 'a',
-            content: 'a',
-            imgUrl: 'a',
-            clickUrl: 'a',
-            value: 3},
+            title: '대구 서부시장의 구석구석 맛집을 찾아',
+            content: '이 코스는 대구 중심지에서 맛있는 것을 찾아 즐기는 코스다. 다양한 먹거리와 업그레이드된 재래시장의 정취와 시골읍내의 정서가 그대로 묻어있는 달성공원 북비산네쪽의 아나고골목을 돌아보자. 회로 먹어도 좋고 구워 먹어도 좋은 아나고의 고소한 냄새가 절로 식욕을 자극할 것이다. 주변의 달성공원과 선교사스윗즈주택의 고풍스러움으로 눈요기하는 것도 즐거움의 한 덤이다.',
+            imgUrl: 'http://tong.visitkorea.or.kr/cms/resource/02/2366102_image2_1.png',
+            clickUrl: 'https://korean.visitkorea.or.kr/detail/cs_detail_cos.html?cotid=da76b9b2-912f-4919-9abb-4e6db36131fb',
+            value: 4},
           {
-            title: 'a',
-            content: 'a',
-            imgUrl: 'a',
-            clickUrl: 'a',
-            value: 3}
+            title: '대구 문화체험 코스',
+            content: '어린이와 함께하기 좋은 코스다. 대구의 문화유적지 신숭겸장군 유적지와 그림 같은 동화사를 둘러보고 시민안전테마파크에서 안전체험 교육을 할 수 있다. 요즘 같이 사고 많은 시대 미리미리 안전을 대비한 자녀교육은 매우 필수적이다. 우리나라 고유의 방짜유기 박물관을 둘러보는 것도 재미있을 것이다.',
+            imgUrl: 'http://tong.visitkorea.or.kr/cms/resource/48/1326548_image2_1.jpg',
+            clickUrl: 'https://korean.visitkorea.or.kr/detail/cs_detail_cos.html?cotid=7f30d178-e07e-423d-9300-078f37b5444e',
+            value: 3.8}
         ]
       }
     },

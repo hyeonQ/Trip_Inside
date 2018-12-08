@@ -41,15 +41,15 @@
     </v-navigation-drawer>
    <v-toolbar app fixed clipped-left>
     <v-toolbar-side-icon v-show="login" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-    <v-toolbar-title>TRIP INSIDE</v-toolbar-title>
+    <v-toolbar-title >TRIP INSIDE</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn v-if="login" flat>Log-Out</v-btn>
+      <v-btn v-if="login" flat @click="logout()" :to="homelink">Log-Out</v-btn>
     </v-toolbar-items>
   </v-toolbar>
   <router-view></router-view>
   <v-content v-if="!login">
-    <LogIn/>
+    <Home/>
   </v-content>
   <v-footer app fixed>
       <span>&copy; South Korea ver.</span>
@@ -58,16 +58,22 @@
 </template>
 
 <script>
+import Home from './components/Home'
 import LogIn from './components/LogIn'
+import SignUp from './components/SignUp'
+import {eventBus} from "@/main";
 
 export default {
   name: 'App',
   components: {
-    LogIn
+    LogIn,
+    SignUp,
+    Home
   },
   data () {
     return {
-      
+      homelink:"/",
+      login: false,
       drawer: false,
       items: [
           {
@@ -85,20 +91,28 @@ export default {
               
               { title: 'Month', link: '/month' },
               { title: 'Sex', link:'/sex' },
-              { title: 'Age', link:'age' },
-              { title: 'Job', link:'job' },
-              { title: 'Income', link:'income' },
-              { title: 'Academy', link:'academy' }
+              { title: 'Age', link:'/age' },
+              { title: 'Job', link:'/job' },
+              { title: 'Income', link:'/income' },
+              { title: 'Academy', link:'/academy' }
             ]
           }
         ]
       //
     }
   },
-  computed: {
-    login () {
-      return false
+  methods: {
+    logout() {
+       this.login = false
     }
-  }
+  },
+  created() {
+          eventBus.$on('loginComplete', () => {
+            this.login = true
+          });
+           
+         
+      }
+
 }
 </script>
