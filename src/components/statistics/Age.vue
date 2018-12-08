@@ -56,10 +56,13 @@
 
        var chart = bb.generate({
          data: {
-         columns: datas
-         
+         columns: datas,
+         type: "line"
             
          },
+          bar: {
+      padding: 2
+       },
         axis: {
              x: {
                  type: "category",
@@ -85,9 +88,10 @@
     #CategoryAxis{
         top: 12%;
         left: 10%;
-        background-color:#b3b2b2;
+        background-color:#414040;
         width:1200px;
         height:600px;
+        fill:aliceblue;
     }
    path{
      fill:#c8cec600;

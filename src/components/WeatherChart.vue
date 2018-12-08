@@ -132,9 +132,7 @@
     stroke:red;
     fill:rgba(0, 255, 255, 0);
   }
-  .bb-region{
-    fill:blueviolet;
-  }
+  
   .bb-title{
     font-size:20px;
   }

@@ -55,9 +55,13 @@
 
        var chart = bb.generate({
          data: {
-         columns: datas
+         columns: datas,
+         type: "bar"
          
             
+         },
+         bar: {
+           padding: 2
          },
         axis: {
              x: {
@@ -80,13 +84,14 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
-<style>
+<style scoped>
     #CategoryAxis{
         top: 12%;
         left: 10%;
-        background-color:#b3b2b2;
+        background-color:#414040;
         width:1200px;
         height:600px;
+        fill:aliceblue;
     }
    path{
      fill:#c8cec600;

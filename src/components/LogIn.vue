@@ -29,9 +29,12 @@
 </template>
 
 <script>
+  import {eventBus} from "@/main"; 
   export default {
+    name: "LogIn",
     data: () => ({
       drawer: null
     })
+    
   }
 </script>

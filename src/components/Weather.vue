@@ -136,6 +136,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
    .d3{
+     
     padding-top:80px;
     height: 800px;
     width: 600px;
@@ -148,9 +149,12 @@
     width: 600px; 
     float: left
    }
-
+  path{
+    stroke:rgb(31, 17, 17);
+    fill:#cebfbf;
+  }
    path:hover{
-     fill:#cbce3a;
+     fill:#631212;
      stroke:#15160a;
    }
    #exp{

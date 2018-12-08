@@ -67,13 +67,15 @@ export default {
   },
   data () {
     return {
+      
       drawer: false,
       items: [
           {
             action: 'local_activity',
-            title: 'Recommendation',
+            title: 'Map',
             items: [
-              { title: 'Map', link: '/map' }
+              {title: 'Recommend', link: '/recommend'},
+              { title: 'Weather', link: '/weather' }
             ]
           },
           {
@@ -95,7 +97,7 @@ export default {
   },
   computed: {
     login () {
-      return true
+      return false
     }
   }
 }

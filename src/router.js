@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Month from '@/components/Month.vue'
-import Map from '@/components/Map.vue'
-import Sex from '@/components/Sex.vue'
-import Age from '@/components/Age.vue'
-import Income from '@/components/Income.vue'
-import Job from '@/components/Job.vue'
-import Academy from '@/components/Academy.vue'
+import Month from '@/components/statistics/Month.vue'
+import Weather from '@/components/Weather.vue'
+import Sex from '@/components/statistics/Sex.vue'
+import Age from '@/components/statistics/Age.vue'
+import Income from '@/components/statistics/Income.vue'
+import Job from '@/components/statistics/Job.vue'
+import Academy from '@/components/statistics/Academy.vue'
+import Recommend from '@/components/Recommend.vue'
 // import LogIn from '@/components/LogIn.vue'
 
 Vue.use(Router)
@@ -27,9 +28,9 @@ export default new Router({
       component: Month
     },
     {
-      path: '/map',
-      name: 'Map',
-      component: Map
+      path: '/weather',
+      name: 'Weather',
+      component: Weather
     },
     {
       path: '/sex',
@@ -55,6 +56,11 @@ export default new Router({
       path: '/academy',
       name: 'Academy',
       component: Academy
+    },
+    {
+      path: '/recommend',
+      name: 'Recommend',
+      component: Recommend
     },
     {
       path: '/about',
