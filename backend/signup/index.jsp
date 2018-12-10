@@ -28,7 +28,7 @@
     String name = request.getParameter("name");
     String birth = request.getParameter("birth");
   
-
+    res.setStatus("id", id);
     sql =  "SELECT  COUNT(*) as cnt "+
            "FROM    User "+
            "WHERE   UserID='"+id+"';";

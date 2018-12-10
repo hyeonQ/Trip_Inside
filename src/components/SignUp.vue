@@ -51,11 +51,10 @@
       submit(){
         if(confirm("회원가입을 완료하시겠습니까?")) {
            
-	   this.$http.post('signup', {
-             id: this.uid,
-             pw: this.password,
-             name: this.name,
-             birth: this.birth
+     this.$http.get('signup?'+ '&id='+this.uid
+                             + '&pw='+this.password
+                             + '&name='+this.name
+                             + '&birth='+this.birth, {
            }).then((res)=>{
               eventBus.$emit('signupComplete');
            }).catch((err)=>{
