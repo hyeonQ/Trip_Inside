@@ -75,7 +75,7 @@ export default {
     return {
       username:LogIn.data.name,
       homelink:"/",
-      login: true,
+      login: false,
       drawer: false,
       username: '',
       items: [

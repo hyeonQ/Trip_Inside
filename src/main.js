@@ -8,7 +8,7 @@ export const eventBus = new Vue();
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios.create({
-//
+	baseURL: "http://192.168.99.100:8080/Trip_Inside/backend/"
 });
 
 

@@ -15,7 +15,7 @@
 
     Class.forName("com.mysql.jdbc.Driver"); 
     conn = DriverManager.getConnection(myUrl, "root", "1111");
-    st = Conn.createStatement();
+    st = conn.createStatement();
 
 
     // 해당 아이디가 DB에 있는 지 확인
@@ -27,14 +27,17 @@
     String pw = request.getParameter("pw"); 
     String name = request.getParameter("name");
     String birth = request.getParameter("birth");
+  
 
-    sql =  "SELECT  COUNT(*) as cnt
-            FROM    User
-            WHERE   UserID="+id+";";
+    sql =  "SELECT  COUNT(*) as cnt "+
+           "FROM    User "+
+           "WHERE   UserID='"+id+"';";
     rs = st.executeQuery(sql);
-
+    rs.next();
+    int cnt = rs.getInt("cnt");
+ 
     // 해당 아이디가 있다면 403 반환
-    if (rs.getInt("cnt") > 0){
+    if (cnt > 0){
         response.setStatus(403);
     }
 
@@ -44,13 +47,13 @@
         // INSERT INTO User(UserID, UserPW, nickname, birth)
         // VALUES          ( id, password(pw), name, birth)
 
-        sql = "INSERT INTO User(UserID, UserPW, nickname, birth)
-               VALUES ("+id+", password("+pw+"), "+name+", DATE("+birth+"));";
+        sql = "INSERT INTO User(UserID, UserPW, nickname, birth) "+
+              "VALUES ('"+id+"', password('"+pw+"'), '"+name+"', DATE("+birth+"));";
 
-        rs = st.executeUpdate(sql);
+        int cnt2 =st.executeUpdate(sql);
 
         // Insert 성공
-        if(rs > 0){
+        if(cnt2 > 0){
             response.setStatus(200);
         }
         // Insert 실패
