@@ -27,9 +27,9 @@
     String pw = request.getParameter("pw"); 
 
 
-    sql =  "SELECT  COUNT(*) as cnt
-            FROM    User
-            WHERE   UserID="+id+"UserPW="+pw+";";
+    sql =   "SELECT  COUNT(*) as cnt "+
+            "FROM    User "+
+            "WHERE   UserID=''"+id+"'UserPW=''"+pw+"'';";
     rs = st.executeQuery(sql);
 
     if (rs.getInt("cnt") > 0){
@@ -38,9 +38,9 @@
     // SELECT  nickname
     // FROM    User
     // WHERE   UserID = id
-        sql = "SELECT   nickname
-               FROM     User
-               WHERE    UserID="+id+";";
+        sql =  "SELECT   nickname " +
+               "FROM     User " +
+               "WHERE    UserID=''"+id+"'';";
         
         rs = st.executeQuery(sql);
         String name = rs.getString("nickname");

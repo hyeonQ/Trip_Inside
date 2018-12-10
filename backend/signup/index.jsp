@@ -70,3 +70,15 @@
     conn.close();
      
 %>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>params result</title>
+</head>
+<body>
+    <%= request.getParameter("id") %><br>
+    <%= request.getParameter("pw") %><br>
+</body>
+</html>
+
