@@ -44,11 +44,6 @@
 </template>
 
 <script>
-    import * as d3 from 'd3';
-    import {bb} from 'billboard.js'
-    import Vue from "vue"
-    import VueMomentJS from "vue-momentjs"
-    import moment from "moment"
    
     export default {
     name: 'chart',
@@ -83,8 +78,8 @@
         location.href = url
 
     },
-      async show(d){
-        posts = this.post1;
+      async show(){
+      
         
       
       },

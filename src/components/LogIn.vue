@@ -3,6 +3,40 @@
     <v-content>
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
+
+ <v-dialog
+      v-model="dialog"
+      width="500"
+    >
+
+      <v-card>
+        <v-card-title
+          class="headline grey lighten-2"
+          primary-title
+        >
+          로그인 오류
+        </v-card-title>
+
+        <v-card-text>
+         ID 혹은 비밀번호가 잘못되었습니다.
+          </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            flat
+            @click="dialog = false"
+          >
+            확인
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+
           <v-flex xs12 sm8 md4>
             <v-card class="elevation-12">
               <v-toolbar dark color="primary">
@@ -36,14 +70,52 @@
       drawer: null,
       uid: '',
       password:'',
+      myid: 'software',
+      mypassword: '123123123',
+      dialog: false,
+      name: ''
     }),
     methods: {
       loginClick(){
-        eventBus.$emit("loginComplete")
+        this.$store.commit()
+
+
+        this.$http.post('login', {
+          id: this.uid,
+          pw: this.password
+        }).then((res) => {
+          console.log(res);
+          if(res.status != 400) {
+            this.$store.commit('login', 
+              res.data[0].name);
+      
+ 
+            eventBus.$emit("loginComplete")
+           this.dialog = false;
+
+
+          } else this.loginFail();
+        }).catch(error => this.loginFail());
+
+
+       
+
+
+
+       
+      
       },
+         
+     
       signupClick() {
         eventBus.$emit("signupClick");
+      },
+      loginFail(){
+        this.dialog = true;
+
       }
+
+      
     }
     
   }

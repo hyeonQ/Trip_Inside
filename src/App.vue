@@ -44,7 +44,7 @@
     <v-toolbar-title >TRIP INSIDE</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn v-if="login" flat @click="logout()" :to="homelink">Log-Out</v-btn>
+      <v-btn v-if="login" flat @click="logout()" :to="homelink">김재국<br>Log-Out</v-btn>
     </v-toolbar-items>
   </v-toolbar>
   <router-view></router-view>
@@ -61,7 +61,8 @@
 import Home from './components/Home'
 import LogIn from './components/LogIn'
 import SignUp from './components/SignUp'
-import {eventBus} from "@/main";
+import {eventBus} from "@/main"
+
 
 export default {
   name: 'App',
@@ -72,9 +73,11 @@ export default {
   },
   data () {
     return {
+      username:LogIn.data.name,
       homelink:"/",
-      login: false,
+      login: true,
       drawer: false,
+      username: '',
       items: [
           {
             action: 'local_activity',
@@ -104,9 +107,13 @@ export default {
   methods: {
     logout() {
        this.login = false
+    },
+    getName() {
+      this.username = this.$store.state.name;
     }
   },
   created() {
+        
           eventBus.$on('loginComplete', () => {
             this.login = true
           });

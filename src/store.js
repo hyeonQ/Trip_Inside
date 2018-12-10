@@ -9,14 +9,19 @@ Vue.use(Vuex)
 const state = {
   uid: '',
   errorState: '',
-  isAuth: false
+  isAuth: false,
+  
 }
 
 export default new Vuex.Store({
   state: {
+    name: ''
 
   },
   mutations: {
+    login(state, info) {
+      state.name= info  
+    }
 
   },
   actions: {
