@@ -50,7 +50,15 @@
         },
       submit(){
         if(confirm("회원가입을 완료하시겠습니까?")) {
-            eventBus.$emit('signupComplete');
+           this.$http.post('signup', {
+             id: this.uid,
+             pw: this.password,
+             name: this.name,
+             birth: this.birth
+           }).then((res)=>{
+              eventBus.$emit('signupComplete');
+           })
+           
           }
         
       }
