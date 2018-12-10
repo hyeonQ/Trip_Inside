@@ -28,7 +28,6 @@
     String name = request.getParameter("name");
     String birth = request.getParameter("birth");
   
-    res.setStatus("id", id);
     sql =  "SELECT  COUNT(*) as cnt "+
            "FROM    User "+
            "WHERE   UserID='"+id+"';";
@@ -48,7 +47,7 @@
         // VALUES          ( id, password(pw), name, birth)
 
         sql = "INSERT INTO User(UserID, UserPW, nickname, birth) "+
-              "VALUES ('"+id+"', password('"+pw+"'), '"+name+"', DATE("+birth+"));";
+              "VALUES ('"+id+"', password('"+pw+"'), '"+name+"', DATE('"+birth+"'));";
 
         int cnt2 =st.executeUpdate(sql);
 

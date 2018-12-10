@@ -51,7 +51,7 @@
       submit(){
         if(confirm("회원가입을 완료하시겠습니까?")) {
            
-     this.$http.get('signup?'+ '&id='+this.uid
+     this.$http.get('signup?id='+this.uid
                              + '&pw='+this.password
                              + '&name='+this.name
                              + '&birth='+this.birth, {

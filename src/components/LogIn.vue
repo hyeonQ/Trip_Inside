@@ -80,9 +80,8 @@
         this.$store.commit()
 
 
-        this.$http.post('login', {
-          id: this.uid,
-          pw: this.password
+        this.$http.get('login?id='+this.uid +
+                                '&pw='+this.password , {
         }).then((res) => {
           console.log(res);
           if(res.status != 400) {

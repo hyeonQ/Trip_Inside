@@ -44,7 +44,7 @@
     <v-toolbar-title >TRIP INSIDE</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn v-if="login" flat @click="logout()" :to="homelink">김재국<br>Log-Out</v-btn>
+      <v-btn v-if="login" flat @click="logout()" :to="homelink">{{username}}<br>Log-Out</v-btn>
     </v-toolbar-items>
   </v-toolbar>
   <router-view></router-view>

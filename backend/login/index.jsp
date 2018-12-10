@@ -15,7 +15,7 @@
 
     Class.forName("com.mysql.jdbc.Driver"); 
     conn = DriverManager.getConnection(myUrl, "root", "1111");
-    st = Conn.createStatement();
+    st = conn.createStatement();
 
 
     // 해당 아이디, 비밀번호가 DB에 있는 지 확인
@@ -29,8 +29,9 @@
 
     sql =   "SELECT  COUNT(*) as cnt "+
             "FROM    User "+
-            "WHERE   UserID=''"+id+"'UserPW=''"+pw+"'';";
+            "WHERE   UserID='"+id+"' AND UserPW=password('"+pw+"');";
     rs = st.executeQuery(sql);
+    rs.next();
 
     if (rs.getInt("cnt") > 0){
 
@@ -40,9 +41,11 @@
     // WHERE   UserID = id
         sql =  "SELECT   nickname " +
                "FROM     User " +
-               "WHERE    UserID=''"+id+"'';";
+               "WHERE    UserID='"+id+"';";
         
         rs = st.executeQuery(sql);
+	rs.next();
+
         String name = rs.getString("nickname");
         response.setHeader("name", name);
         response.setStatus(200);
